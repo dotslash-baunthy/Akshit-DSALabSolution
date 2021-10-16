@@ -37,25 +37,29 @@ public class CheckBalancedBracket {
                 // Pop from stack if encountered character in the string is a closing brace and
                 // compare the current character with the popped element
                 else if (closingBrackets.indexOf(character) != -1) {
-                    char c = stack.pop();
-                    switch (character) {
-                        case '}':
-                            if (c != '{') {
-                                return 0;
-                            }
-                            break;
+                    if (stack.isEmpty()) {
+                        return 0;
+                    } else {
+                        char c = stack.pop();
+                        switch (character) {
+                            case '}':
+                                if (c != '{') {
+                                    return 0;
+                                }
+                                break;
 
-                        case ']':
-                            if (c != '[') {
-                                return 0;
-                            }
-                            break;
+                            case ']':
+                                if (c != '[') {
+                                    return 0;
+                                }
+                                break;
 
-                        case ')':
-                            if (c != '(') {
-                                return 0;
-                            }
-                            break;
+                            case ')':
+                                if (c != '(') {
+                                    return 0;
+                                }
+                                break;
+                        }
                     }
                 } else {
                     return -1;
